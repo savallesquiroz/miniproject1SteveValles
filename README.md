@@ -16,7 +16,7 @@ An in-depth paragraph about your project and overview of use.
 ### PIP install instructions
 
 ```
-pip install webbrowser
+pip install -r requirements.txt
 ```
 
 ### Installing
