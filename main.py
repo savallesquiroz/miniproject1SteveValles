@@ -15,6 +15,7 @@ tickers = yf.Tickers('nvda intc nke amzn nflx')
 mytickers10days = tickers.history(period='10d', interval='1d')
 # (10/10 points) Store this information in a list that you will convert to an array in NumPy.
 mytickersList = mytickers10days.to_numpy().tolist()
+mytickersArray= np.array(mytickersList)
 # (10/10 points) Plot these 5 graphs. Feel free to add as much information to the graphs as you like exploring the documentation for matplotlib. At minimum it just needs to show 10 data points.
 # (10/10 points) Save these graphs in a folder called charts as PNG files. Do not upload these to your project folder, the project should save these when it executes. You may want to add this folder to your .gitignore file.
 # (10/10 points) There should be a minimum of 5 commits on your project, be sure to commit often!
