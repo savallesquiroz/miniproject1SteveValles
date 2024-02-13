@@ -9,9 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
 import copy
+from pathlib import Path
 # (20/20 points) Using an API of your choice (yfinance works), collect the closing price of 5 of your favorite stock tickers for the last 10 trading days.
 tickers = ['nvda', 'intc', 'nke', 'addyy', 'nflx']
 
+try:
+    Path("charts").mkdir()
+except FileExistsError:
+    pass
 # (10/10 points) Store this information in a list that you will convert to an array in NumPy.
 
 for ticker in tickers:
@@ -21,18 +26,22 @@ for ticker in tickers:
     for price in history['Close']:
         closingList.append(price)
 
-    print(closingList)
+    #print(closingList)
 
     lowprice = copy.copy(closingList)
     lowprice.sort()
     low_price = lowprice[0]
     high_price = lowprice[-1]
 # (10/10 points) Plot these 5 graphs. Feel free to add as much information to the graphs as you like exploring the documentation for matplotlib. At minimum it just needs to show 10 data points.
-    plt.plot(closingList)
+    myarray = np.array(closingList)
+    plt.plot(myarray)
     plt.xlabel("Days")
     plt.ylabel("Closing Price")
     plt.title(f"{ticker} Stock Price Data")
     plt.axis([1, 10, low_price-2, high_price+2])
+
+    filename = "charts/" + ticker + ".png"
+    plt.savefig(filename)
     plt.show()
 # (10/10 points) Save these graphs in a folder called charts as PNG files. Do not upload these to your project folder, the project should save these when it executes. You may want to add this folder to your .gitignore file.
 
